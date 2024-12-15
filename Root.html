@@ -1,0 +1,123 @@
+<head>
+    <title>可疑數學站</title>
+    <style>
+        mainText{
+            color:black;
+            font-size: 25px;
+        }
+        white{
+            color: white;
+        }
+        notMainText{
+            color:black;
+            font-size: 15px;
+        }
+    </style>
+    <script>
+        function change(){
+            let ix = document.getElementById("ix").value;
+            let iy = document.getElementById("iy").value;
+            let ims = document.getElementById("is").value;
+            let imm = document.getElementById("im").value;
+            let yis;
+            let a;
+            let b;
+            let c;
+            if(imm<0){
+                yis = -(iy*Math.abs(imm) - ix*(-ims));
+            }
+            else{
+                yis = iy*Math.abs(imm) - ix*ims;                
+            }
+            if(yis % imm == 0){
+                c = yis / imm;
+                a = ims;
+                b = -imm;
+            }
+            else{
+                c = yis;
+                a = ims;
+                b = -imm;
+            }
+            if(c > 0){
+                if(b>0){
+                    document.getElementById("ra").innerHTML = a;
+                    document.getElementById("rb").innerHTML = "+"+b;
+                    document.getElementById("rc").innerHTML = "+" + c;
+                }
+                else{
+                    document.getElementById("ra").innerHTML = a;
+                    document.getElementById("rb").innerHTML = b;
+                    document.getElementById("rc").innerHTML = "+" + c;
+                }
+                
+            }
+            else{
+                if(b>0){
+                    document.getElementById("ra").innerHTML = a;
+                    document.getElementById("rb").innerHTML = "+"+b;
+                    if(c==0){
+                        document.getElementById("rc").innerHTML = "";
+                    }
+                    else{
+                        document.getElementById("rc").innerHTML = c;
+                    }
+                }
+                else{
+                    document.getElementById("ra").innerHTML = a;
+                    document.getElementById("rb").innerHTML = b;
+                    if(c==0){
+                        document.getElementById("rc").innerHTML = "";
+                    }
+                    else{
+                        document.getElementById("rc").innerHTML = c;
+                    }
+                }
+                
+            }
+            console.log(a , b , c , yis)
+            
+        }
+    </script>
+</head>
+<body>
+    <h1>方程式轉換器</h1>
+    <notMainText>我不認為這樣比較快,但很爽:></notMainText>
+    <br>
+    <mainText>請填入以下空格</mainText>
+    <br>
+    <mainText>座標(線通過的任一點)(</mainText>
+    <input type = "number" id = "ix">
+    <mainText>,</mainText>
+    <input type = "number" id = "iy">
+    <mainText>)</mainText>
+    <br>
+    <br>
+    <white>------------</white>
+    <input type = "number" id = "is">
+    <br>
+    <mainText>斜率:</mainText>
+    <white>--</white>
+    <mainText>──────────(以分數輸入)</mainText>
+    <br>
+    <white>------------</white>
+    <input type = "number" id = "im">
+    <br>
+    <br>
+    <br>
+    <button title="「給我一個點,我還是沒辦法把地球舉起來!」" onclick="change()">轉換!</button>
+    <br>
+    <br>
+    <mainText>結果:</mainText>
+    <br>
+    <mainText id="ra"></mainText>
+    <mainText >x</mainText>
+    <mainText id="rb"></mainText>
+    <mainText >y</mainText>
+    <mainText id="rc"></mainText>
+    <mainText > = 0</mainText>
+    <br>
+    <br>
+    <notMainText>「應該不會出錯,如果有任何問題請到其他網站!」by 作者</notMainText>
+    
+</body>
